@@ -55,35 +55,39 @@ class HomePage extends StatelessWidget {
                   items: List.generate(
                     5,
                     (index) => Builder(
-                      builder: (context) => Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              'assets/images/28.jpg',
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 5,
-                            ),
-                            child: Text('Category'),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(
-                                'lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer ',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                softWrap: false,
+                      builder: (context) => GestureDetector(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(
+                                'assets/images/28.jpg',
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 5,
+                              ),
+                              child: Text('Category'),
+                            ),
+                            Flexible(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  'lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer lorem ipsum dolor sit amer ',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  softWrap: false,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        onTap: () =>
+                            Navigator.pushNamed(context, ContentPage.id),
                       ),
                     ),
                   ),

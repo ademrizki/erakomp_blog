@@ -1,9 +1,6 @@
-import 'package:blog/src/screens/content.dart';
-import 'package:blog/src/screens/home.dart';
-import 'package:blog/src/screens/home_tab.dart';
-import 'package:blog/src/screens/programme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'screens/screens.dart';
 
 class App extends StatelessWidget {
   @override
@@ -29,6 +26,7 @@ class App extends StatelessWidget {
         HomeTabPage.id: (context) => HomeTabPage(),
         ProgrammePage.id: (context) => ProgrammePage(),
         ContentPage.id: (context) => ContentPage(),
+        ProgrammeContentsPage.id: (context) => ProgrammeContentsPage(),
       },
     );
   }
