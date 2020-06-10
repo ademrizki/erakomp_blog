@@ -1,23 +1,10 @@
+import 'package:blog/src/screens/content.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   static final String id = 'HomePage';
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int current = 0;
-  int _selectedTabIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedTabIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +51,6 @@ class _HomePageState extends State<HomePage> {
                     viewportFraction: 0.85,
 //                      autoPlay: true,
                     autoPlayInterval: Duration(seconds: 5),
-                    onPageChanged: (index, reason) =>
-                        setState(() => current = index),
                   ),
                   items: List.generate(
                     5,
@@ -105,6 +90,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20.0,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 15,
@@ -123,70 +111,73 @@ class _HomePageState extends State<HomePage> {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 5,
                 shrinkWrap: true,
-                itemBuilder: (context, index) => Card(
-                  margin: EdgeInsets.symmetric(vertical: 5),
-                  color: Colors.amber,
-                  elevation: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                'lorem ipsum Title lorem ipsum Title lorem ipsum Title lorem ipsum Title',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                softWrap: false,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                itemBuilder: (context, index) => GestureDetector(
+                  child: Card(
+                    margin: EdgeInsets.symmetric(vertical: 5),
+                    color: Colors.amber,
+                    elevation: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'lorem ipsum Title lorem ipsum Title lorem ipsum Title lorem ipsum Title',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  softWrap: false,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 25,
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    DateFormat('MMM. dd, yyyy').format(
-                                      DateTime.now(),
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    Text(
+                                      DateFormat('MMM. dd, yyyy').format(
+                                        DateTime.now(),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 25,
-                                  ),
-                                  Icon(
-                                    Icons.adjust,
-                                    size: 10,
-                                  ),
-                                  SizedBox(
-                                    width: 25,
-                                  ),
-                                  Text(
-                                    DateFormat('hh:mm aa').format(
-                                      DateTime.now(),
+                                    SizedBox(
+                                      width: 25,
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    Icon(
+                                      Icons.adjust,
+                                      size: 10,
+                                    ),
+                                    SizedBox(
+                                      width: 25,
+                                    ),
+                                    Text(
+                                      DateFormat('hh:mm aa').format(
+                                        DateTime.now(),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Image.asset(
-                            'assets/images/profile.jpeg',
-                            height: 150,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Image.asset(
+                              'assets/images/profile.jpeg',
+                              height: 100,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
+                  onTap: () => Navigator.pushNamed(context, ContentPage.id),
                 ),
               ),
             ),
